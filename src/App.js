@@ -5,16 +5,19 @@ import Item from './pages/item/Item';
 import { Route, Routes } from 'react-router-dom'
 import ItemDetail from './pages/item/ItemDetail';
 import Event from './pages/event/Event';
-
+import { useState } from 'react';
+import data from './db/data'
 
 function App() {
+  let [shoes] = useState(data) 
+
   return (
     <div>
       <NavComponent />
       <div className='main-bg'/>
       <Routes>
-        <Route path='/' element={<Item />}/>
-        <Route path='/detail' element={<ItemDetail />}/>
+        <Route path='/' element={<Item shoes={shoes} />}/>
+        <Route path='/detail/:id' element={<ItemDetail shoes={shoes} />}/>
         <Route path='*' element={<div>없는페이지입니다.</div>}/>
 
         {/* nested routed */}

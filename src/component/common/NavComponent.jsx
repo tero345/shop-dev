@@ -1,21 +1,22 @@
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import { Link, NavLink } from 'react-router-dom'
 
 export default function NavComponent() {
   return (
     <div>
-        <Navbar bg="light" expand="lg">
-            <Container>
-            <Navbar.Brand href="#home">Shoes</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                  <Nav.Link href="#home">Home</Nav.Link>
-                  <Nav.Link href="#link">Link</Nav.Link>
-                </Nav>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <Container>
+            <Navbar.Brand as={Link} to="/">React-Bootstrap</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
+              </Nav>
             </Navbar.Collapse>
-            </Container>
+          </Container>
         </Navbar>
     </div>
   )

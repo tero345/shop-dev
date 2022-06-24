@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import Nav from 'react-bootstrap/Nav';
 
 // styled-components 적용
 // 단점 : html의 구조가 길어지면 구분이 모호애짐,
@@ -20,12 +21,10 @@ let BlackBox = styled.div`
 export default function ItemDetail({shoes}) {
   let [count, setCount] = useState(0)
   let [show, setShow] = useState(false)
-
+  let [tabContentNum, setTabContentNum] = useState(0)
 
   //hook(갈고리) mount, update 시 코드 실행
   useEffect(() => {
-    console.log('실행')
-
     // 2초 후 해당 부분 숨기기
     setTimeout(() => {
       setShow(true)
@@ -76,7 +75,45 @@ export default function ItemDetail({shoes}) {
                   목록
                 </button>  
             </div>
+
+            <Nav variant="tabs"  defaultActiveKey="link0">
+              <Nav.Item>
+                <Nav.Link 
+                  eventKey="link0"
+                  onClick={()=>{setTabContentNum(0)}}
+                >
+                  버튼0
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link 
+                  eventKey="link1" 
+                    onClick={()=>{setTabContentNum(1)}}
+                  >
+                    버튼1
+                  </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link 
+                  eventKey="link2" 
+                  onClick={()=>{setTabContentNum(2)}}
+                >
+                  버튼2
+                </Nav.Link>
+              </Nav.Item>
+          </Nav>
         </div>
+        <TabContent tabContentNum={tabContentNum}/>
     </div>
   )
+}
+
+function TabContent({tabContentNum}) {
+  if(tabContentNum === 0){
+    return <div>내용0</div>
+  }else if(tabContentNum === 1){
+    return <div>내용1</div>
+  }else {
+    return <div>내용2</div> 
+  }
 }

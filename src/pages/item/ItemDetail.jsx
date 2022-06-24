@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -18,6 +18,27 @@ let BlackBox = styled.div`
 ` 
 
 export default function ItemDetail({shoes}) {
+  let [count, setCount] = useState(0)
+  let [show, setShow] = useState(false)
+
+
+  //hook(갈고리) mount, update 시 코드 실행
+  useEffect(() => {
+    console.log('실행')
+
+    // 2초 후 해당 부분 숨기기
+    setTimeout(() => {
+      setShow(true)
+    }, 2000);
+
+
+    // useEffect 전에 실행됨 
+    // return () => {
+        //기존타이머 제거 코드
+    // }
+
+  }, [])
+
   let navigate = useNavigate()
   const { id } = useParams("id")
 
@@ -27,10 +48,13 @@ export default function ItemDetail({shoes}) {
 
   return (
     <div className="container text-center">
-        <BlackBox>
-          <YellowBtn bg="orange">버튼</YellowBtn>
-          <YellowBtn bg="blue">버튼</YellowBtn>
-        </BlackBox>
+        {count}
+        {!show &&
+          <BlackBox id="styledBox">
+            <YellowBtn bg="orange" onClick={()=> {setCount(count + 1)}}>버튼</YellowBtn>
+            <YellowBtn bg="blue">버튼</YellowBtn>
+          </BlackBox>
+        }
         <div className="row">
             <div className="col-md-6">
                 <img src={`https://codingapple1.github.io/shop/shoes${ Number(id)+1 }.jpg`} width="100%" />

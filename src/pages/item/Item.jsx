@@ -16,7 +16,7 @@ export default function Item({shoes}) {
             <Container className="text-center">
                 <Row>
                 
-                {lists.map((item, idx) => (
+                {lists.map((item,) => (
                     <Col sm 
                         key={item.id} 
                         onClick={()=>{

@@ -7,6 +7,7 @@ import ItemDetail from './pages/item/ItemDetail';
 import Event from './pages/event/Event';
 import { useState } from 'react';
 import data from './db/data'
+import Cart from './pages/cart/Cart';
 
 function App() {
   let [shoes] = useState(data) 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<Item shoes={shoes} />}/>
         <Route path='*' element={<div>없는페이지입니다.</div>}/>
         <Route path='/detail/:id' element={<ItemDetail shoes={shoes} />}/>
+        <Route path='/cart' element={<Cart />}/>
         {/* nested routed */}
         <Route path='/event' element={<Event />}>
           <Route path='one' element={<div>첫 주문시 양배추즙 서비스</div>}/>

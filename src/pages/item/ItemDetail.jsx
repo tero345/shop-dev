@@ -75,34 +75,34 @@ export default function ItemDetail({shoes}) {
                   목록
                 </button>  
             </div>
-
-            <Nav variant="tabs"  defaultActiveKey="link0">
-              <Nav.Item>
-                <Nav.Link 
-                  eventKey="link0"
-                  onClick={()=>{setTabContentNum(0)}}
-                >
-                  버튼0
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link 
-                  eventKey="link1" 
-                    onClick={()=>{setTabContentNum(1)}}
-                  >
-                    버튼1
-                  </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link 
-                  eventKey="link2" 
-                  onClick={()=>{setTabContentNum(2)}}
-                >
-                  버튼2
-                </Nav.Link>
-              </Nav.Item>
-          </Nav>
         </div>
+        <p/>
+        <Nav variant="tabs"  defaultActiveKey="link0">
+          <Nav.Item>
+            <Nav.Link 
+              eventKey="link0"
+              onClick={()=>{setTabContentNum(0)}}
+            >
+              버튼0
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link 
+              eventKey="link1" 
+                onClick={()=>{setTabContentNum(1)}}
+              >
+                버튼1
+              </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link 
+              eventKey="link2" 
+              onClick={()=>{setTabContentNum(2)}}
+            >
+              버튼2
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
         <TabContent tabContentNum={tabContentNum}/>
     </div>
   )

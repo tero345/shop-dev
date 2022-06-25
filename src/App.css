@@ -43,3 +43,12 @@
   background-size : cover;
   background-position : center;
 }
+
+.start {
+  opacity : 0
+}
+.end {
+  opacity : 1;
+  /* 해당속성이 변할 때 서서히 변경해주세요 */
+  transition : opacity 0.5s;
+}

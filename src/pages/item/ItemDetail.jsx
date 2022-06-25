@@ -109,11 +109,21 @@ export default function ItemDetail({shoes}) {
 }
 
 function TabContent({tabContentNum}) {
-  if(tabContentNum === 0){
-    return <div>내용0</div>
-  }else if(tabContentNum === 1){
-    return <div>내용1</div>
-  }else {
-    return <div>내용2</div> 
-  }
+  let [fade, setFade] = useState('')
+  // 변경시 class명 추가
+  // automatc batching 기능때문에 딜레이를 줘야함
+  useEffect(()=>{
+    let a = setTimeout(() => {
+      setFade('end')
+    }, 300);
+    
+    return ()=>{
+      setFade('')
+    }
+  },[tabContentNum])
+  return (
+    <div className={`start ${fade}`}>
+    {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][tabContentNum]}
+    </div>
+  )
 }

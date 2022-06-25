@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import Nav from 'react-bootstrap/Nav';
+import Nav from 'react-bootstrap/Nav'
+import { addCart } from '../../store/cartSlice'
+import { useDispatch } from 'react-redux';
 
 // styled-components 적용
 // 단점 : html의 구조가 길어지면 구분이 모호애짐,
@@ -22,6 +24,8 @@ export default function ItemDetail({shoes}) {
   let [count, setCount] = useState(0)
   let [show, setShow] = useState(false)
   let [tabContentNum, setTabContentNum] = useState(0)
+  let dispatch = useDispatch()
+  
 
   //hook(갈고리) mount, update 시 코드 실행
   useEffect(() => {
@@ -40,8 +44,9 @@ export default function ItemDetail({shoes}) {
 
   let navigate = useNavigate()
   const { id } = useParams("id")
+  const index = shoes.findIndex(a => a.id === Number(id) )
 
-  if(shoes[id] === undefined){
+  if(shoes[index] === undefined){
     return <div>없는 페이지 입니다.</div>
   }
 
@@ -59,12 +64,20 @@ export default function ItemDetail({shoes}) {
                 <img src={`https://codingapple1.github.io/shop/shoes${ Number(id)+1 }.jpg`} width="100%" />
                 </div>
                 <div className="col-md-6">
-                <h4 className="pt-5">{ shoes[id].title }</h4>
-                <p>{ shoes[id].content }</p>
-                <p>{ shoes[id].price }원</p>
+                <h4 className="pt-5">{ shoes[index].title }</h4>
+                <p>{ shoes[index].content }</p>
+                <p>{ shoes[index].price }원</p>
                 <button 
                   className="btn btn-danger"
                   style={{ marginRight:"10px" }}
+                  onClick={()=> {
+                    dispatch(addCart({
+                      id: shoes[index].id,
+                      name : shoes[index].title,
+                      count : 1
+                    }))
+                    navigate('/cart')
+                  }}
                 >
                   주문하기
                 </button>

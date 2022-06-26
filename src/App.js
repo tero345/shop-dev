@@ -7,7 +7,7 @@ import Event from './pages/event/Event';
 import { useEffect, useState, lazy, Suspense } from 'react';
 import data from './db/data'
 
-// lazy 적용
+// 성능개선 - lazy 적용
 // import ItemDetail from './pages/item/ItemDetail';
 // import Cart from './pages/cart/Cart';
 

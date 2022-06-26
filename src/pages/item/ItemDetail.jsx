@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import Nav from 'react-bootstrap/Nav'
 import { addCart } from '../../store/cartSlice'
 import { useDispatch } from 'react-redux';
+import ModalComponent from '../../component/common/ModalComponent'
+
 
 // styled-components 적용
 // 단점 : html의 구조가 길어지면 구분이 모호애짐,
@@ -25,7 +27,8 @@ export default function ItemDetail({shoes}) {
   let [show, setShow] = useState(false)
   let [tabContentNum, setTabContentNum] = useState(0)
   let dispatch = useDispatch()
-  
+
+  const [modal, setModal] = useState(false);
 
   //hook(갈고리) mount, update 시 코드 실행
   useEffect(() => {
@@ -88,6 +91,20 @@ export default function ItemDetail({shoes}) {
                 > 
                   목록
                 </button>  
+                <button 
+                  className="btn btn-danger"
+                  onClick={()=> {
+                    setModal(true)
+                  }} 
+                > 
+                  모달
+                </button>
+                <ModalComponent 
+                  modal={modal} 
+                  setModal={setModal}
+                  title={'공통모달'}
+                  message={'msg 내용'}
+                /> 
             </div>
         </div>
         <p/>
@@ -118,6 +135,7 @@ export default function ItemDetail({shoes}) {
           </Nav.Item>
         </Nav>
         <TabContent tabContentNum={tabContentNum}/>
+        
     </div>
   )
 }

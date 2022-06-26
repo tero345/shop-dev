@@ -1,15 +1,24 @@
-import React from 'react'
+import {React, memo, useMemo} from 'react'
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import { changeName } from '../../store/userSlice';
 import { plusCount, minusCount } from '../../store/cartSlice'
 
+// 꼭 필요할때만 랜더링하기
+// 비교작업이 들어가기 때문에 안좋을수도 있다.
+let Child = memo(function() {
+    console.log('랜더링중')
+    return <div>자식</div>
+})
+
 export default function Cart() {
     // Redux store 가져오는 함수
     let goods = useSelector((state)=>{
         return state.cart
     })
+
+    console.log(goods);
 
 
     // let state = useSelector((state)=>{
@@ -23,8 +32,19 @@ export default function Cart() {
     // store.js로 요청보내주는 함수
     let dispatch = useDispatch()
 
+    
+
+    function 함수() {
+        
+    }
+
+    // useEffect와 비슷
+    // 실행시점의 차이
+    useMemo(()=>{return 함수()}, [])
+
   return (
     <div>
+        <Child/>
         {}
         <Table>
             <thead>

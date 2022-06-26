@@ -28,7 +28,7 @@ export default function Cart() {
         {}
         <Table>
             <thead>
-                <tr>
+                <tr className='text-center'>
                     <th>#</th>
                     <th>상품명</th>
                     <th>수량</th>
@@ -39,10 +39,10 @@ export default function Cart() {
                 {
                     goods.map((val, idx)=>(
                         <tr key={ val.id }>
-                            <td>{ idx }</td>
+                            <td className='text-center'>{ idx }</td>
                             <td>{ val.name }</td>
-                            <td>{ val.count }</td>
-                            <td>
+                            <td className='text-center'>{ val.count }</td>
+                            <td className='text-center'>
                                 <div className="mb-2">
                                     {/* <Button 
                                         variant="primary" 

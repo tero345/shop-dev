@@ -5,12 +5,29 @@ import Item from './pages/item/Item';
 import { Route, Routes } from 'react-router-dom'
 import ItemDetail from './pages/item/ItemDetail';
 import Event from './pages/event/Event';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import data from './db/data'
 import Cart from './pages/cart/Cart';
 
 function App() {
   let [shoes] = useState(data) 
+
+  /**
+   * 로컬스토리지
+   * 재접속해도 계속 남아있음
+   * localStorage.setItem('age', '20')
+   * localStorage.getItem('age')
+   */
+  
+  useEffect(()=>{
+    // 로컬스토리지 초기값 셋팅
+    console.log('localStorage');
+    //const local = localStorage.getItem('watched')
+    const data = JSON.parse(localStorage.getItem('watched'))
+    console.log(data);
+    console.log(data.length);
+    if(!data) localStorage.setItem('watched', JSON.stringify([]))
+  },[])
 
   return (
     <div>

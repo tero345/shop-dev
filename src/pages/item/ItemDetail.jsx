@@ -52,11 +52,12 @@ export default function ItemDetail({shoes}) {
 
   return (
     <div className="container text-center">
-        {count}
+        {/* {count} */}
         {!show &&
           <BlackBox id="styledBox">
-            <YellowBtn bg="orange" onClick={()=> {setCount(count + 1)}}>버튼</YellowBtn>
-            <YellowBtn bg="blue">버튼</YellowBtn>
+            타임 세일!! 2초!~
+            {/* <YellowBtn bg="orange" onClick={()=> {setCount(count + 1)}}>버튼</YellowBtn>
+            <YellowBtn bg="blue">버튼</YellowBtn> */}
           </BlackBox>
         }
         <div className="row">
@@ -96,7 +97,7 @@ export default function ItemDetail({shoes}) {
               eventKey="link0"
               onClick={()=>{setTabContentNum(0)}}
             >
-              버튼0
+              탭1
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -104,7 +105,7 @@ export default function ItemDetail({shoes}) {
               eventKey="link1" 
                 onClick={()=>{setTabContentNum(1)}}
               >
-                버튼1
+                탭2
               </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -112,7 +113,7 @@ export default function ItemDetail({shoes}) {
               eventKey="link2" 
               onClick={()=>{setTabContentNum(2)}}
             >
-              버튼2
+              탭3
             </Nav.Link>
           </Nav.Item>
         </Nav>
